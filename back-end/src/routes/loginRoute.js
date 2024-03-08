@@ -21,7 +21,8 @@ export const logInRoute = {
     if (isCorrect) {
       jwt.sign({ id, isVerified, email, info }, process.env.JWT_SECRET, { expiresIn: '2d'}, (err, token) => {
         if (err) {
-          res.status(500).send(err);
+          console.log(err);
+          res.sendStatus(500);
         }
 
         res.status(200).json({ token });
